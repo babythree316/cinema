@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sự Kiện Đặc Biệt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            margin: 20px 0;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background: #ff6600;
+            color: white;
+            cursor: not-allowed;
+            border-radius: 5px;
+            width: 100%;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+                font-size: 16px;
+            }
+
+            .popup {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sự Kiện Đặc Biệt: Tham Gia Ngay!</h1>
+    <img src="event-image.jpg" alt="Hình ảnh sự kiện">
+    <p><strong>Ngày 10/03/2025 - Tại TP. Hồ Chí Minh</strong></p>
+    <p>Sự kiện hứa hẹn mang đến những trải nghiệm tuyệt vời, kết nối với chuyên gia và nhiều cơ hội hấp dẫn. Đừng bỏ lỡ
+        cơ hội tham gia!</p>
+
+    <!-- Video YouTube -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/RVKoADPvUbk?si=-7F8vmfaaxmOkB70"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2F100068863397041%2Fvideos%2F1299490984597439%2F&show_text=true&width=476&t=0"
+        width="476" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+        allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        allowFullScreen="true"></iframe>
+    <div class="popup-overlay" id="popupOverlay" onclick="redirectToSite()"></div>
+    <div class="popup" id="popup" onclick="redirectToSite()">
+        <h2>Khám Phá Thêm!</h2>
+        <p>Hãy ghé thăm website đối tác của chúng tôi để biết thêm thông tin thú vị.</p>
+        <button id="closeBtn" disabled>Đóng</button>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("popupOverlay").style.display = "block";
+        }
+        function redirectToSite() {
+            window.open("https://example.com", "_blank");
+            let closeBtn = document.getElementById("closeBtn");
+            closeBtn.disabled = false;
+            closeBtn.style.cursor = "pointer";
+            closeBtn.style.opacity = "1";
+        }
+        document.getElementById("closeBtn").addEventListener("click", function () {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("popupOverlay").style.display = "none";
+        });
+        setTimeout(showPopup, 5000); // Hiển thị popup sau 5 giây
+    </script>
+</body>
+
+</html>
